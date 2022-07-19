@@ -1,0 +1,8 @@
+#!/bin/bash
+clear
+curl -o /etc/yum.repos.d/msprod.repo https://packages.microsoft.com/config/rhel/8/prod.repo && yum remove unixODBC-utf16 unixODBC-utf16-devel -y && yum install -y mssql-tools unixODBC-devel && echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile && echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc && source ~/.bashrc && curl -o /etc/yum.repos.d/mssql-server.repo https://packages.microsoft.com/config/rhel/8/mssql-server-2019.repo && yum install -y mssql-server && /opt/mssql/bin/mssql-conf setup <<EOF
+2
+Crono1995!!!
+Crono1995!!!
+
+EOF && yum install -y mssql-server-fts && systemctl status mssql-server && systemctl daemon-reload
